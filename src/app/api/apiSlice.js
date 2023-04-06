@@ -1,11 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { apiSlice } from './api/apiSlice'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const store = configureStore({
-    reducer: {
-        [apiSlice.reducerPath]: apiSlice.reducer
-    },
-    middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(apiSlice.middlewlare),
-    devTools: true
+export const apiSlice = createApi({
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3500' }),
+    tagTypes: ['Note', 'User'],
+    endpoints: builder => ({})
 })
